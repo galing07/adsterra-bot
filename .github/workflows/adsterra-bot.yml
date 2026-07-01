@@ -2,7 +2,7 @@ name: Adsterra Bot
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Toutes les 15 minutes
+    - cron: '*/15 * * * *'  # Setiap 15 menit
   workflow_dispatch:
 
 jobs:
@@ -19,18 +19,18 @@ jobs:
         python-version: '3.10'
         
     - name: Install dependencies
-      run: pip install requests beautifulsoup4  # Ajout de beautifulsoup4
+      run: pip install requests beautifulsoup4  # Tambahan beautifulsoup4
       
-    - name: Run Adsterra Bot
+    - name: Jalankan Adsterra Bot
       run: |
-        echo "Début de l'exécution à $(date)" > bot.log
+        echo "Mulai eksekusi pada $(date)" > bot.log
         python ./script_2.py >> bot.log 2>&1
-        echo "Fin de l'exécution à $(date)" >> bot.log
+        echo "Selesai eksekusi pada $(date)" >> bot.log
         
-    - name: Show logs in console
+    - name: Tampilkan log di konsol
       run: cat bot.log
       
-    - name: Save logs
+    - name: Simpan log
       uses: actions/upload-artifact@v4
       if: always()
       with:
